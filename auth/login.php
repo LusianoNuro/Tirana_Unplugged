@@ -23,20 +23,111 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/login.css">
+    <style>
+        /* Background image styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://images.pexels.com/photos/32216558/pexels-photo-32216558/free-photo-of-yellow-vintage-van-in-the-streets-of-tirana.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        /* Login container styling with transparent yellow */
+        .login-container {
+            background: rgba(119, 223, 186, 0.85); /* soft yellow with transparency */
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            width: 320px;
+            text-align: center;
+            color: #222;
+            border: 5px solid #cdcd0e; /* thicker border */
+        }
+
+        .login-container h2 {
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #171302; /* a darker yellow-brown for contrast */
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            padding: 12px 15px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 2.5px solid #cc9e00; /* thicker border */
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: #e6c200;
+            outline: none;
+        }
+
+        button {
+            background-color: #c2f00c;
+            color: #4a3c00;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #b38900;
+        }
+
+        a {
+            color: #e70f0fdf;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        p {
+            margin-top: 25px;
+            font-size: 14px;
+            color: #aa075b;
+        }
+
+        p a {
+            font-weight: 600;
+        }
+    </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <?php if ($error) echo "<p class=\"error\">$error</p>"; ?>
-        <form id="login-form" method="POST" style="display: flex; flex-direction: column;">
-            <input type="email" name="email" placeholder="Email" required><br>
-            <input type="password" name="password" placeholder="Password" required><br>
+        <form id="login-form" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Login</button>
-            <a href="forgot_password.php" style="margin-top: 10px; color: #007bff; cursor: pointer; display: inline-block; text-decoration: underline;">Forget your password?</a>
+            <a href="forgot_password.php">Forget your password?</a>
         </form>
 
         <p>Don't have an account? <a href="signup.php">Signup</a></p>
     </div>
 </body>
 </html>
+
+
