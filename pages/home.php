@@ -91,45 +91,34 @@ if (!isLoggedIn()) {
     text-shadow: 0 1px 5px rgba(0,0,0,0.6);
   }
 
-  /* Footer */
+  /* Footer styles from create_event.php */
   footer#footer {
-    background: rgba(30, 20, 114, 0.9);
-    color: #eee;
-    padding: 3rem 1rem 1rem;
-    margin-top: 5rem;
+      background: rgba(30, 60, 114, 0.9);
+      color: #eee;
+      padding: 2rem 1rem;
+      margin-top: 4rem;
   }
   .footer-container {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
   }
   .footer-section {
-    flex: 1 1 250px;
-    min-width: 220px;
+      flex: 1 1 250px;
+      min-width: 220px;
   }
   .footer-section h2, .footer-section h3 {
-    color: #fbc531;
-    margin-bottom: 0.75rem;
-    font-weight: 700;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.7);
-  }
-  .footer-section p {
-    color: #ddd;
-    font-size: 0.95rem;
-    margin-bottom: 0.4rem;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+      color: #fbc531;
+      margin-bottom: 0.75rem;
   }
   .footer-bottom {
-    text-align: center;
-    border-top: 1px solid rgba(255 255 255 / 0.2);
-    margin-top: 1.5rem;
-    padding-top: 0.75rem;
-    font-size: 0.9rem;
-    color: #bbb;
-    text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #bbb;
   }
 
   /* Responsive */
@@ -163,33 +152,29 @@ if (!isLoggedIn()) {
     <h3>Create your FREE event website today<h3/>
   </main>
 
-  <footer id="footer" role="contentinfo">
+  <footer id="footer">
     <div class="footer-container">
-      <section class="footer-section" aria-labelledby="footer-title">
-        <h2 id="footer-title">How it Works</h2>
-        <p>Tirana Unplugged is an online platform that allows users to book and create events in the city of Tirana. 
-Users can explore various event opportunities and organize their favorite activities..</p>
-      </section>
-
-      <section class="footer-section" aria-labelledby="footer-contact">
-        <h3 id="footer-contact">Contact</h3>
-        <p>+355 69 558 6969</p>
-        <p>TiranaUnplugged@gmail.com</p>
-        <p>Rruga e Elbasanit, Tirana, Albania</p>
-      </section>
-
-      <section class="footer-section" aria-labelledby="footer-social">
-        <h3 id="footer-social">Social Media</h3>
-        <p>TikTok</p>
-        <p>Instagram</p>
-        <p>Facebook</p>
-      </section>
+        <div class="footer-section">
+            <h2>Tirana Unplugged</h2>
+            <p>Tirana Unplugged është një platformë online që mundëson përdoruesve të rezervojnë dhe krijojnë evente në qytetin e Tiranës. Me një dizajn të thjeshtë dhe intuitiv, përdoruesit mund të eksplorojnë mundësitë për ngjarje të ndryshme dhe të organizojnë aktivitetet e tyre të preferuara.</p>
+        </div>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>+355 69 558 6969</p>
+            <p>makinaime@gmail.com</p>
+            <p>Rruga e Elbasanit, Tirana, Albania</p>
+        </div>
+        <div class="footer-section">
+            <h3>Social Media</h3>
+            <p>TikTok</p>
+            <p>Instagram</p>
+            <p>Facebook</p>
+        </div>
     </div>
-
     <div class="footer-bottom">
-      <p>Copyright 2025. All rights reserved.</p>
+        <p>Copyright 2025. All rights reserved.</p>
     </div>
-  </footer>
+</footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

@@ -135,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['event_id'])) {
             color: #333;
             transform: scale(1.04);
         }
+        /* Footer styles from create_event.php */
         footer#footer {
             background: rgba(30, 60, 114, 0.9);
             color: #eee;
@@ -207,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['event_id'])) {
         <div class="footer-container">
             <div class="footer-section">
                 <h2>Tirana Unplugged</h2>
-                <p>Dont hesitate to join our events!</p>
+                <p>Tirana Unplugged është një platformë online që mundëson përdoruesve të rezervojnë dhe krijojnë evente në qytetin e Tiranës. Me një dizajn të thjeshtë dhe intuitiv, përdoruesit mund të eksplorojnë mundësitë për ngjarje të ndryshme dhe të organizojnë aktivitetet e tyre të preferuara.</p>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>

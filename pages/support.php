@@ -113,6 +113,7 @@ $tickets = $stmt->fetchAll(PDO::FETCH_ASSOC);
             border-radius: 5px;
             background: #f9f9f9;
         }
+        /* Footer styles from create_event.php */
         footer#footer {
             background: rgba(30, 60, 114, 0.9);
             color: #eee;

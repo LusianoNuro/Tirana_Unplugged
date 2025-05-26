@@ -79,6 +79,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             margin-bottom: 0.5rem;
             color: #fbc531;
         }
+        /* Footer styles from create_event.php */
         footer#footer {
             background: rgba(30, 60, 114, 0.9);
             color: #eee;
