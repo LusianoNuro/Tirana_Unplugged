@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             justify-content: center;
             align-items: center;
             color: #333;
+            position: relative;
+            overflow: hidden;
         }
 
         /* Login container styling with transparent yellow */
@@ -50,6 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             color: #222;
             border: 5px solid #cdcd0e; /* thicker border */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .login-container h2 {

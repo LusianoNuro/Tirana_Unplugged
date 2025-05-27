@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once '../includes/PHPMailer-master/src/Exception.php';
-require_once '../includes/PHPMailer-master/src/PHPMailer.php';
-require_once '../includes/PHPMailer-master/src/SMTP.php';
+require_once __DIR__ . '/../includes/PHPMailer-master/src/Exception.php';
+require_once __DIR__ . '/../includes/PHPMailer-master/src/PHPMailer.php';
+require_once __DIR__ . '/../includes/PHPMailer-master/src/SMTP.php';
 
 function sendVerificationEmail($resetEmail, $verificationCode) {
     $mail = new PHPMailer(true);

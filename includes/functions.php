@@ -1,6 +1,6 @@
 <?php
-require_once 'db_connect.php';
-require_once '../auth/phpMailer.php';
+require_once __DIR__ . '/db_connect.php';
+require_once __DIR__ . '/../auth/phpMailer.php';
 
 function registerUser($name, $surname, $email, $phone, $password, $birthdate, $gender, $is_admin = 0) {
     global $pdo;
