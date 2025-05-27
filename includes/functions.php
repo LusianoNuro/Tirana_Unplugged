@@ -1,16 +1,19 @@
 <?php
 require_once 'db_connect.php';
+require_once 'phpMailer.php';
 
 function registerUser($name, $surname, $email, $phone, $password, $birthdate, $gender, $is_admin = 0) {
     global $pdo;
     try {
-        echo $gender;
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $stmt = $pdo->prepare("INSERT INTO users (name, surname, email, phone, password, birthdate, gender, is_admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         $result = $stmt->execute([$name, $surname, $email, $phone, $hashed_password, $birthdate, $gender, $is_admin]);
+        if ($result) {
+            // Send welcome email
+            sendWelcomeEmail($email, $name);
+        }
         return $result;
     } catch (PDOException $e) {
-        echo $e->getMessage();
         error_log("Error in registerUser: " . $e->getMessage());
         return false;
     }

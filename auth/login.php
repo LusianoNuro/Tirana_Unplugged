@@ -118,6 +118,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="login-container">
         <h2>Login</h2>
+        <?php if ($error): ?>
+            <div style="color: #b30000; background: #ffeaea; border: 1.5px solid #b30000; padding: 10px 0; border-radius: 6px; margin-bottom: 18px; font-weight: 600;">
+                <?php echo htmlspecialchars($error); ?>
+            </div>
+        <?php endif; ?>
         <form id="login-form" method="POST">
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
@@ -127,6 +132,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <p>Don't have an account? <a href="signup.php">Signup</a></p>
     </div>
+    <script>
+        // Show popup ONLY if redirected after password reset and not on login error
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            // Only show popup if there is no error message on the page
+            const hasError = document.querySelector('.login-container div[style*="background: #ffeaea"]');
+            if (params.get('reset') === 'success' && !hasError) {
+                const popup = document.createElement('div');
+                popup.textContent = 'Your password has been updated!';
+                popup.style.position = 'fixed';
+                popup.style.top = '30px';
+                popup.style.left = '50%';
+                popup.style.transform = 'translateX(-50%)';
+                popup.style.background = '#27ae60';
+                popup.style.color = '#fff';
+                popup.style.padding = '18px 32px';
+                popup.style.borderRadius = '8px';
+                popup.style.fontWeight = 'bold';
+                popup.style.fontSize = '1.2rem';
+                popup.style.boxShadow = '0 4px 18px rgba(39,174,96,0.18)';
+                popup.style.zIndex = '9999';
+                document.body.appendChild(popup);
+                setTimeout(() => popup.remove(), 3500);
+            }
+        });
+    </script>
 </body>
 </html>
 

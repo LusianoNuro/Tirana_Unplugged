@@ -2,6 +2,7 @@
 require_once '../includes/config.php';
 require_once '../includes/functions.php';
 
+$error = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $surname = $_POST['surname'];
@@ -10,8 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
     $birthdate = $_POST['birthdate'];
     $gender = $_POST['gender'];
-    
-    if (registerUser($name, $surname, $email, $phone, $password, $birthdate, $gender)) {
+
+    if (checkEmailExists($email)) {
+        $error = "This user already exists.";
+    } else if (registerUser($name, $surname, $email, $phone, $password, $birthdate, $gender)) {
         redirect('login.php');
     } else {
         $error = "Registration failed.";
@@ -110,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         button:hover {
-            background-color: #ab38900;
+            background-color: #ab3890;
         }
 
         a {
@@ -134,6 +137,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="signup-container">
         <h2>Signup</h2>
+        <?php if (!empty($error)): ?>
+            <div style="color: #e70f0f; font-weight: bold; margin-bottom: 18px; background: #fff3f3; border: 2px solid #e70f0f; border-radius: 6px; padding: 10px;">
+                <?php echo $error; ?>
+            </div>
+        <?php endif; ?>
         <form method="POST">
             <input type="text" name="name" placeholder="Name" required />
             <input type="text" name="surname" placeholder="Surname" required />

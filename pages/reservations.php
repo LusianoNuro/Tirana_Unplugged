@@ -29,7 +29,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #333;
             line-height: 1.6;
-            background: url('background.jpg') no-repeat center center fixed; /* Vendosni rrugën e saktë të imazhit */
+            background: url('https://lostinalbania.com/wp-content/uploads/2024/09/Tiranas_Rinia_Park_Aug_15.jpeg') no-repeat center center fixed;
             background-size: cover;
         }
         nav.navbar {
@@ -108,6 +108,83 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             font-size: 0.9rem;
             color: #bbb;
         }
+
+        /* Responsive Navbar for Mobile */
+        @media (max-width: 700px) {
+          nav.navbar {
+            padding: 0.7rem 0.5rem;
+          }
+          nav.navbar ul {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            background: rgba(30, 60, 114, 0.97);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            padding: 0.5rem 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 200;
+          }
+          nav.navbar ul.active {
+            display: flex;
+          }
+          nav.navbar .navbar-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: #fbc531;
+            font-size: 2rem;
+            position: absolute;
+            right: 1.2rem;
+            top: 1rem;
+            z-index: 201;
+            cursor: pointer;
+          }
+          nav.navbar ul li {
+            width: 100%;
+          }
+          nav.navbar ul li a {
+            display: block;
+            width: 100%;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #fbc53122;
+          }
+          nav.navbar ul li:last-child a {
+            border-bottom: none;
+          }
+        }
+        @media (min-width: 701px) {
+          nav.navbar .navbar-toggle {
+            display: none !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .reservations-container {
+            padding: 1rem;
+            margin: 2rem 0.5rem;
+          }
+        }
+        @media (max-width: 500px) {
+          .reservations-container {
+            padding: 0.5rem;
+            margin: 1rem 0.2rem;
+          }
+        }
+        /* Responsive Footer */
+        @media (max-width: 700px) {
+          .footer-container {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 0.5rem;
+          }
+          .footer-section {
+            min-width: 0;
+          }
+        }
     </style>
 </head>
 <body>
@@ -121,6 +198,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <li><a href="#footer">About Us</a></li>
             <li><a href="../auth/logout.php">Logout</a></li>
         </ul>
+        <button class="navbar-toggle">&#9776;</button>
     </nav>
     <div class="reservations-container">
         <h2>My Reservations</h2>
@@ -139,13 +217,13 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="footer-container">
             <div class="footer-section">
                 <h2>Tirana Unplugged</h2>
-                <p>Tirana Unplugged është një platformë online që mundëson përdoruesve të rezervojnë dhe krijojnë evente në qytetin e Tiranës. Me një dizajn të thjeshtë dhe intuitiv, përdoruesit mund të eksplorojnë mundësitë për ngjarje të ndryshme dhe të organizojnë aktivitetet e tyre të preferuara.</p>
+                <p>Tirana Unplugged is an online platform that enables users to book and create events in the city of Tirana. With a simple and intuitive design, users can explore opportunities for various events and organize their favorite activities.</p>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>+355 69 558 6969</p>
-                <p>makinaime@gmail.com</p>
-                <p>Rruga e Elbasanit, Tirana, Albania</p>
+                <p><a href="tel:+355695586969" style="color: #fbc531; text-decoration: underline;">+355 69 558 6969</a></p>
+                <p><a href="mailto:tiranaUnplugged@gmail.com" style="color: #fbc531; text-decoration: underline;">tiranaUnplugged@gmail.com</a></p>
+                <p>Elbasani Street, Tirana, Albania</p>
             </div>
             <div class="footer-section">
                 <h3>Social Media</h3>
@@ -169,6 +247,15 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     if (footer) {
                         footer.scrollIntoView({ behavior: 'smooth' });
                     }
+                });
+            }
+
+            // Navbar toggle for mobile
+            const navbarToggle = document.querySelector('.navbar-toggle');
+            const navbarMenu = document.querySelector('nav.navbar ul');
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', function() {
+                    navbarMenu.classList.toggle('active');
                 });
             }
         });

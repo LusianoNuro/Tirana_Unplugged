@@ -253,6 +253,83 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        
+        /* Responsive Navbar for Mobile */
+        @media (max-width: 700px) {
+          nav.navbar {
+            padding: 0.7rem 0.5rem;
+          }
+          nav.navbar ul {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+            background: rgba(30, 60, 114, 0.97);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+            padding: 0.5rem 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            display: none;
+            z-index: 200;
+          }
+          nav.navbar ul.active {
+            display: flex;
+          }
+          nav.navbar .navbar-toggle {
+            display: block;
+            background: none;
+            border: none;
+            color: #fbc531;
+            font-size: 2rem;
+            position: absolute;
+            right: 1.2rem;
+            top: 1rem;
+            z-index: 201;
+            cursor: pointer;
+          }
+          nav.navbar ul li {
+            width: 100%;
+          }
+          nav.navbar ul li a {
+            display: block;
+            width: 100%;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #fbc53122;
+          }
+          nav.navbar ul li:last-child a {
+            border-bottom: none;
+          }
+        }
+        @media (min-width: 701px) {
+          nav.navbar .navbar-toggle {
+            display: none !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .create-event-container {
+            padding: 1rem;
+            margin: 2rem 0.5rem;
+          }
+        }
+        @media (max-width: 500px) {
+          .create-event-container {
+            padding: 0.5rem;
+            margin: 1rem 0.2rem;
+          }
+        }
+        /* Responsive Footer */
+        @media (max-width: 700px) {
+          .footer-container {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 0.5rem;
+          }
+          .footer-section {
+            min-width: 0;
+          }
+        }
     </style>
 </head>
 <body>
@@ -266,6 +343,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <li><a href="#footer">About Us</a></li>
             <li><a href="../auth/logout.php">Logout</a></li>
         </ul>
+        <button class="navbar-toggle" aria-label="Toggle navigation">
+            &#9776;
+        </button>
     </nav>
     <div class="create-event-container">
         <h2>Create Event</h2>
@@ -302,13 +382,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="footer-container">
             <div class="footer-section">
                 <h2>Tirana Unplugged</h2>
-                <p>Tirana Unplugged është një platformë online që mundëson përdoruesve të rezervojnë dhe krijojnë evente në qytetin e Tiranës. Me një dizajn të thjeshtë dhe intuitiv, përdoruesit mund të eksplorojnë mundësitë për ngjarje të ndryshme dhe të organizojnë aktivitetet e tyre të preferuara.</p>
+                <p>Tirana Unplugged is an online platform that enables users to book and create events in the city of Tirana. With a simple and intuitive design, users can explore opportunities for various events and organize their favorite activities.</p>
             </div>
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>+355 69 558 6969</p>
-                <p>makinaime@gmail.com</p>
-                <p>Rruga e Elbasanit, Tirana, Albania</p>
+                <p><a href="tel:+355695586969" style="color: #fbc531; text-decoration: underline;">+355 69 558 6969</a></p>
+                <p><a href="mailto:tiranaUnplugged@gmail.com" style="color: #fbc531; text-decoration: underline;">tiranaUnplugged@gmail.com</a></p>
+                <p>Elbasani Street, Tirana, Albania</p>
             </div>
             <div class="footer-section">
                 <h3>Social Media</h3>
@@ -376,6 +456,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         };
                         reader.readAsDataURL(file);
                     }
+                });
+            }
+            
+            // Navbar toggle for mobile
+            const navbarToggle = document.querySelector('.navbar-toggle');
+            const navbarMenu = document.querySelector('nav.navbar ul');
+            
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', function() {
+                    navbarMenu.classList.toggle('active');
                 });
             }
         });
