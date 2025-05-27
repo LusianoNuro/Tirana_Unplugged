@@ -1,6 +1,6 @@
 <?php
 require_once 'db_connect.php';
-require_once 'phpMailer.php';
+require_once '../auth/phpMailer.php';
 
 function registerUser($name, $surname, $email, $phone, $password, $birthdate, $gender, $is_admin = 0) {
     global $pdo;
